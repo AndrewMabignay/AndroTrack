@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+:root {
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    
+    @apply 
+        bg-neutral-300
+        h-screen
+        flex;
+}
+
+/* MAIN SECTION */
+main {
+    @apply 
+        h-full 
+        w-full 
+        relative;
+}
+
+/* AUTHENTICATION HEADER */
+.authentication-header {
+    @apply 
+        h-[60px] 
+        bg-neutral-50 
+        px-4 
+        shadow 
+        flex 
+        justify-end 
+        items-center 
+        gap-3;
+
+    button {
+        @apply
+            h-[30px] 
+            w-[30px]  
+            text-[16px]
+            rounded
+            flex
+            justify-center
+            items-center
+            cursor-pointer;
+    }
+
+    .profile-image {
+        @apply
+            h-[30px] 
+            w-[30px] 
+            rounded-full 
+            cursor-pointer;
+    }
+}
+
+@keyframes slideFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideToTop {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+}
+
+.animate-slide-in {
+    animation: slideFromTop 0.4s ease-out;
+}
+
+.animate-slide-out {
+    animation: slideToTop 0.4s ease-in forwards;
+}
+
+
+@import './user.css';

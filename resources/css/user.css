@@ -1,0 +1,513 @@
+/* ==================== USER MANAGEMENT SECTION ==================== */
+.user-management-section {
+    /* ----------- START USER MANAGEMENT SECTION ----------- */
+
+    /* HEADER CONTAINER */
+    .user-management-header {
+        @apply
+            h-[70px]
+            w-full
+            px-4
+            flex 
+            justify-between
+            items-center;
+
+        /* USER LIST TITLE */
+        .title-container {
+            @apply
+                text-[16px] 
+                text-neutral-700 
+                font-semibold;
+        }
+
+        /* USER BUTTON & REFRESH CONTAINER */
+        .add-refresh-container {
+            @apply
+                flex
+                gap-3;
+
+            /* REFRESH */
+            .refreshBtn {
+                @apply
+                    h-[40px] 
+                    w-[40px]
+                    bg-neutral-700
+                    text-neutral-300
+                    rounded-[8px];
+
+                i {
+                    @apply
+                        text-[12px];
+                }
+            }
+
+            /* CREATE */
+            .addUserBtn {
+                @apply
+                    bg-neutral-800
+                    h-[40px]
+                    w-[115px]
+                    text-neutral-300
+                    text-[12px]
+                    font-bold
+                    rounded-[8px]
+                    flex
+                    justify-center
+                    items-center
+                    gap-2;
+
+                i {
+                    @apply
+                        text-[12px];
+                }
+            }
+        }
+    }   
+
+    /* USER TABLE WRAPPER */
+    .table-wrapper {
+        @apply
+            bg-neutral-100
+            mx-4
+            px-4
+            py-4
+            border
+            border-neutral-300
+            rounded-md
+            flex
+            flex-col
+            gap-4
+            overflow-auto;
+
+        /* SEARCH & DISPLAY CONTAINER */
+        .search-display-container {
+            @apply
+                flex
+                justify-between;
+
+            /* SEARCH CONTAINER */
+            .search-container {
+                @apply
+                    text-[13px]
+                    text-neutral-700
+                    border
+                    border-neutral-300
+                    rounded
+                    overflow-hidden
+                    flex
+                    items-center;
+
+                .searchBtn {
+                    @apply
+                        h-[35px] 
+                        w-[35px]
+                        text-[13px] 
+                        text-neutral-400
+                        flex 
+                        justify-center 
+                        items-center;
+                }
+            }
+
+            /* ROLE STATUS CONTAINER */
+            .role-status-container {
+                @apply
+                    text-[14px]
+                    flex
+                    gap-2;
+
+                /* ROLE & STATUS DROPDOWN */
+                .relative {
+                    
+                    /* ROLE DROPDOWN BUTTON */
+                    .role-dropdown-btn {
+                        @apply 
+                            h-[35px]
+                            px-[15px]
+                            text-[14px]
+                            text-neutral-700
+                            border
+                            border-neutral-300
+                            rounded-sm
+                            flex
+                            justify-center
+                            items-center
+                            gap-2;
+
+                        i {
+                            @apply  
+                                text-[12px];
+                        }
+                    }
+
+                    /* ROLE DROPDOWN CONTAINER */
+                    .role-dropdown-menu {
+                        @apply
+                            absolute 
+                            z-10 
+                            bg-neutral-100 
+                            w-full 
+                            text-[12px] 
+                            text-neutral-700 
+                            rounded 
+                            overflow-hidden; 
+
+                        button {
+                            @apply
+                                w-full 
+                                py-1 
+                                border 
+                                border-neutral-400;
+                        }
+                    }
+
+                    /* STATUS DROPDOWN BUTTON */
+                    .status-dropdown-btn {
+                        @apply
+                            h-[35px]
+                            px-[15px]
+                            text-[14px]
+                            text-neutral-700
+                            border
+                            border-neutral-300
+                            rounded-sm
+                            flex
+                            justify-center
+                            items-center
+                            gap-2;
+
+                        i {
+                            @apply
+                                text-[12px];
+                        }
+                    }
+
+                    /* STATUS DROPDOWN CONTAINER */
+                    .status-dropdown-menu {
+                        @apply
+                            absolute 
+                            z-10 
+                            bg-neutral-100 
+                            w-full 
+                            text-[12px] 
+                            text-neutral-700 
+                            rounded 
+                            overflow-hidden;
+
+                        button {
+                            @apply
+                                w-full 
+                                py-1 
+                                border 
+                                border-neutral-400;
+                        }
+                    }
+                }
+            }
+        }
+
+        /* USER TABLE */
+        .user-table {
+            @apply
+                w-full 
+                text-[14px] 
+                text-center 
+                text-neutral-700;
+
+            /* USER TABLE HEAD */
+            thead {
+                @apply
+                    bg-neutral-200 
+                    text-neutral-600 
+                    uppercase 
+                    text-xs;
+
+                tr {
+                    th {
+                        @apply
+                            px-4 
+                            py-3;
+                    }
+                }
+            }
+
+            /* USER TABLE BODY */
+            tbody {
+                @apply
+                    divide-y 
+                    divide-neutral-100;
+
+                tr {
+                    @apply
+                        hover:bg-neutral-50;
+
+                    td {
+                        @apply
+                            px-4 
+                            py-3;
+
+                        .button-action-container {
+                            @apply
+                                flex 
+                                justify-center 
+                                items-center 
+                                gap-1;
+
+                            /* VIEW */
+                            .view-btn {
+                                @apply
+                                    h-[30px]
+                                    w-[30px]
+                                    flex
+                                    rounded
+                                    cursor-pointer
+                                    justify-center
+                                    items-center;
+                            }
+
+                            /* EDIT */
+                            .edit-btn {
+                                @apply
+                                    h-[30px]
+                                    w-[30px]
+                                    rounded
+                                    cursor-pointer
+                                    flex
+                                    justify-center
+                                    items-center;
+                            }
+
+                            /* STATUS TOGGLE */
+                            .status-btn {
+                                @apply
+                                    h-[30px]
+                                    px-[12px]
+                                    border
+                                    border-neutral-500
+                                    rounded
+                                    flex
+                                    justify-center
+                                    items-center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* OVERLAY | USER FORM */
+    .overlay {
+        @apply
+            bg-black/30 
+            absolute 
+            top-0 
+            left-0 
+            bottom-0 
+            right-0 
+            z-50
+            justify-center
+            items-center;
+
+        /* USER FORM */
+        form {
+            @apply
+                bg-white 
+                p-5
+                text-neutral-800
+                text-[14px]
+                rounded-md
+                flex
+                flex-col
+                gap-5;
+
+            /* TITLE CONTAINER */
+            .title-container {
+                @apply
+                    flex 
+                    justify-between 
+                    items-center;
+
+                h2 {
+                    @apply
+                        text-[17px] 
+                        font-bold;
+                }
+
+                /* REFRESH FORM */
+                .refresh-form-btn {
+                    @apply
+                        h-[30px]
+                        w-[30px]
+                        text-neutral-600
+                        text-[12px]
+                        border
+                        border-neutral-600
+                        rounded
+                        flex
+                        justify-center
+                        items-center;
+                }
+            }
+
+            /* PERSONAL INFORMATION CONTAINER */
+            .personal-information-container {
+                @apply
+                    space-y-4 
+                    flex 
+                    justify-between;
+
+                /* IMAGE CONTAINER */
+                .image-container {
+
+                    /* IMAGE PREVIEW */
+                    .preview-image {
+                        @apply
+                            w-32 
+                            h-32 
+                            object-cover 
+                            rounded 
+                            border 
+                            border-gray-300;
+                    }
+
+                    /* FILE INPUT AND LABEL */
+                    .upload-image {
+                        @apply
+                            flex;
+
+                        .upload-image-container {
+                            @apply
+                                flex 
+                                flex-col 
+                                items-center 
+                                gap-2;
+
+                            label {
+                                @apply
+                                    cursor-pointer 
+                                    px-5 
+                                    py-3 
+                                    bg-neutral-600 
+                                    text-[12.3px] 
+                                    text-white 
+                                    rounded 
+                                    hover:bg-neutral-700;
+                            }
+
+                            span {
+                                @apply
+                                    text-sm 
+                                    text-gray-600;
+                            }
+                        }
+                    }
+                }
+
+                /* PERSONAL INFORMATION FIELDS */
+                .personal-information-fields {
+                    @apply
+                        grid 
+                        grid-cols-2 
+                        gap-6;
+
+                    /* FIRSTNAME, LASTNAME, MIDDLENAME, PHONE NUMBER */
+                    .input-container {
+                        @apply
+                            flex 
+                            flex-col 
+                            gap-2;
+
+                        input {
+                            @apply
+                                w-[250px] 
+                                px-3 
+                                py-2 
+                                border 
+                                border-neutral-400 
+                                rounded;
+                        }
+                    }
+                }    
+            }
+
+            /* INPUT FIELDS CONTAINER */
+            .input-fields-container {
+                @apply
+                    grid 
+                    grid-cols-3 
+                    gap-6;
+
+                /* USERNAME, EMAIL, PASSWORD, CONFIRM PASSWORD, ROLE, STATUS */
+                .input-container {
+                    @apply
+                        flex 
+                        flex-col 
+                        gap-2;
+
+                    input {
+                        @apply
+                            w-[250px] 
+                            px-3 
+                            py-2 
+                            border 
+                            border-neutral-400 
+                            rounded;
+                    }
+
+                    select {
+                        @apply
+                            w-[250px] 
+                            px-3 
+                            py-2 
+                            border 
+                            border-neutral-400 
+                            rounded 
+                            appearance-none;
+                    }
+                }
+            }
+
+            /* BUTTON CONTAINER */
+            .button-container {
+                @apply
+                    flex
+                    justify-between;
+
+                /* CANCEL BUTTON */
+                .cancel-btn {
+                    @apply
+                        h-[40px]
+                        px-4
+                        font-normal
+                        border-2
+                        border-neutral-600
+                        text-[13px]
+                        rounded-md
+                        flex
+                        justify-center
+                        items-center
+                        gap-2;
+                }
+
+                /* SAVE CHANGES BUTTON */
+                .save-changes-btn {
+                    @apply
+                        h-[40px]
+                        px-4
+                        font-normal
+                        bg-neutral-800
+                        text-neutral-200
+                        text-[13px]
+                        rounded-md
+                        flex
+                        justify-center
+                        items-center
+                        gap-2;
+                }
+            }
+        }
+    }
+
+    /* ----------- END USER MANAGEMENT SECTION ----------- */
+}
