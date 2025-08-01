@@ -148,20 +148,23 @@
         <div id="overlay" class="overlay hidden">
             
             <!-- USER FORM -->
-            <form>
-                <!-- @csrf -->
+            <form id="userForm" enctype="multipart/form-data">
+                @csrf
 
                 <!-- TITLE CONTAINER -->
                 <div class="title-container">
                     <h2>Add User</h2>
 
                     <!-- REFRESH FORM -->
-                    <button id="refreshFormBtn" class="refresh-form-btn">
+                    <button id="refreshFormBtn" class="refresh-form-btn" type="button">
                         <i class="fas fa-sync-alt"></i>
                     </button>
                 </div>
 
                 <hr>
+
+                {{-- USER ID --}}
+                <input type="hidden" id="id" name="id">
 
                 <!-- PERSONAL INFORMATION CONTAINER -->
                 <div class="personal-information-container">
@@ -174,7 +177,7 @@
 
                         <!-- FILE INPUT AND LABEL -->
                         <div class="upload-image">
-                            <input id="file-upload" type="file" accept="image/*" class="hidden"/>
+                            <input id="file-upload" type="file" name="profile_image" accept="image/*" class="hidden"/>
                             
                             <div class="upload-image-container">
                                 <label for="file-upload">
@@ -190,25 +193,25 @@
                         <!-- FIRSTNAME -->
                         <div class="input-container">
                             <label for="firstname">First Name</label>
-                            <input type="text" id="firstname" placeholder="Enter your firstname">
+                            <input type="text" name="firstname" id="firstname" placeholder="Enter your firstname">
                         </div>
 
                         <!-- LASTNAME -->
                         <div class="input-container">
                             <label for="lastname">Last Name</label>
-                            <input type="text" id="lastname" placeholder="Enter your lastname">
+                            <input type="text" name="lastname" id="lastname" placeholder="Enter your lastname">
                         </div>
 
                         <!-- MIDDLE NAME -->
                         <div class="input-container">
                             <label for="middlename">Middle Name</label>
-                            <input type="text" id="middlename" placeholder="Enter your middlename">
+                            <input type="text" name="middlename" id="middlename" placeholder="Enter your middlename">
                         </div>
 
                         <!-- PHONE NUMBER -->
                         <div class="input-container">
-                            <label for="middlename">Phone Number</label>
-                            <input type="text" id="middlename" placeholder="Enter your middlename">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="text" name="phone_number" id="phone_number" placeholder="Enter your middlename">
                         </div>
                     </div>
                 </div>
@@ -217,30 +220,29 @@
 
                 <!-- INPUT FIELDS CONTAINER -->
                 <div class="input-fields-container">
-                    <input type="hidden" id="id" name="id">
-
+                
                     <!-- USERNAME -->
                     <div class="input-container">
                         <label for="username">Username</label>
-                        <input type="text" id="username" placeholder="Enter your username">
+                        <input type="text" name="username" id="username" placeholder="Enter your username">
                     </div>
 
                     <!-- EMAIL -->
                     <div class="input-container">
                         <label for="email">Email</label>
-                        <input type="text" id="email" placeholder="Enter your email">
+                        <input type="text" name="email" id="email" placeholder="Enter your email">
                     </div>
 
                     <!-- PASSWORD -->
                     <div class="input-container">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter your email">
+                        <input type="password" name="password" id="password" placeholder="Enter your email">
                     </div>
 
                     <!-- CONFIRM PASSWORD -->
                     <div class="input-container">
-                        <label for="password">Confirm Password</label>
-                        <input type="password" id="password" placeholder="Enter your email">
+                        <label for="password_confirmation">Confirm Password</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Enter your email">
                     </div>
 
                     <!-- ROLE -->
@@ -249,8 +251,9 @@
                         <select name="role" id="role">
                             <option value="">Select a role</option>
                             <option value="admin">Admin</option>
-                            <option value="author">Author</option>
-                            <option value="editor">Editor</option>
+                            <option value="manager">Manager</option>
+                            <option value="staff">Staff</option>
+                            <option value="supplier">Supplier</option>
                         </select>
                     </div>
 
@@ -267,6 +270,10 @@
                 
                 <hr>
 
+                <span id="output">
+
+                </span>
+
                 <!-- BUTTON CONTAINER -->
                 <div class="button-container">
 
@@ -277,7 +284,7 @@
                     </button>
                     
                     <!-- SAVE CHANGES BUTTON -->
-                    <button type="button" id="cancelBtn" class="save-changes-btn">
+                    <button type="submit" id="saveChangesBtn" class="save-changes-btn">
                         <i class="fas fa-save"></i>
                         Save changes
                     </button>
@@ -285,4 +292,34 @@
             </form>
         </div>
     </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 
+
+            // SAVE CHANGES FORM
+            $("#userForm").submit(function(event) {
+                event.preventDefault();
+
+                let form = $("#userForm")[0];
+                let data = new FormData(form);
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('user.store') }}",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        $("#output").text(data.res);
+                        console.log('successful');
+                    },
+                    error: function(xhr) {
+                        $("#output").text(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 </x-layout>
