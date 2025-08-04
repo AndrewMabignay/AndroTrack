@@ -408,7 +408,6 @@
                 $.ajax({
                     type: "POST",
                     url: `${window.location.origin}/users`,
-                    url: "{{ route('user.store') }}",
                     data: data,
                     processData: false,
                     contentType: false,
