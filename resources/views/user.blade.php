@@ -289,7 +289,7 @@
             function loadUsers() {
                 $.ajax({
                     type: 'GET',
-                    url: "{{ route('user.userList') }}",
+                    url: `${window.location.origin}/user-list`,
                     success: function(response) {
                         let tbody = $('#user-table tbody');
                         tbody.empty(); // CLEAR PREVIOUS DATA
@@ -364,6 +364,7 @@
 
                 $.ajax({
                     type: 'GET',
+                    url: `${window.location.origin}/user/${encryptedId}`,
                     url: `/user/${encryptedId}`,
                     success: function(user) {
                         $('#overlay').removeClass('hidden').addClass('flex');
@@ -406,6 +407,7 @@
 
                 $.ajax({
                     type: "POST",
+                    url: `${window.location.origin}/users`,
                     url: "{{ route('user.store') }}",
                     data: data,
                     processData: false,
@@ -427,7 +429,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: `/users/${encryptedId}`,
+                    url: `${window.location.origin}/users/${encryptedId}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
