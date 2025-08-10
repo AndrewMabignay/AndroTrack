@@ -15,9 +15,23 @@ class UserController extends Controller
     }
 
     // USER LIST
-    public function userList() 
+    // public function userList() 
+    // {
+    //     $users = User::all()->map(function ($user) {
+    //         $user->encrypted_id = encrypt($user->id);
+    //         return $user;
+    //     });
+
+    //     return response()->json([
+    //         'users' => $users
+    //     ]);
+    // }
+
+    public function userList(Request $request) 
     {
-        $users = User::all()->map(function ($user) {
+        $users = User::paginate(5); // halimbawa: 5 users per page
+
+        $users->getCollection()->transform(function ($user) {
             $user->encrypted_id = encrypt($user->id);
             return $user;
         });
@@ -26,6 +40,7 @@ class UserController extends Controller
             'users' => $users
         ]);
     }
+
 
     // USER EDIT FORM
     public function edit($encryptedId) 

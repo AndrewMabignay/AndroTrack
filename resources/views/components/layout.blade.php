@@ -9,23 +9,28 @@
     <title>Document</title>
 
     {{-- HTTP ASSETS --}}
-    {{-- @vite('resources/css/app.css') --}}
+    @vite('resources/css/app.css')
 
-    @php
+    {{-- HTTPS ASSETS --}}
+    {{-- @php
         $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
     @endphp
 
     <link rel="stylesheet" href="{{ secure_asset('build/' . $manifest['resources/css/app.css']['file']) }}">
-    <script type="module" src="{{ secure_asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+     --}}
 
     <!-- FONT AWESOME ICON -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <main>
+    <main id="app" data-page="{{ $page }}">
         {{ $slot }}
     </main>
 
-    @vite('resources/js/app.js')
+    {{-- HTTP ASSETS --}}
+    @vite(['resources/js/app.js'])
+
+    {{-- HTTPS ASSETS --}}
+    {{-- <script type="module" src="{{ secure_asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script> --}}
 </body>
 </html>
