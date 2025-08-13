@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
         case 'user':
             import('./user.js');
             break;
+        case 'category':
+            import('./products/category.js');
+            break;
         default:
             console.warn('No script found for this page.');
     }

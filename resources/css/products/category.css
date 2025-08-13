@@ -1,0 +1,393 @@
+/* ==================== CATEGORY MANAGEMENT SECTION ==================== */
+.category-section {
+    /* ----------- START CATEGORY MANAGEMENT SECTION ----------- */
+
+    /* HEADER CONTAINER */
+    .category-management-header {
+        @apply
+            h-[70px]
+            w-full
+            px-4
+            flex 
+            justify-between
+            items-center;
+
+        /* CATEGORY LIST TITLE */
+        .title-container {
+            @apply
+                text-[15px] 
+                text-neutral-700 
+                font-semibold;
+        }
+
+        /* CATEGORY BUTTON & REFRESH CONTAINER */
+        .add-refresh-container {
+            @apply
+                flex
+                gap-3;
+
+            /* REFRESH */
+            .refreshBtn {
+                @apply
+                    h-[40px] 
+                    w-[40px]
+                    bg-neutral-700
+                    text-neutral-300
+                    rounded-[8px];
+
+                i {
+                    @apply
+                        text-[12px];
+                }
+            }
+
+            /* CREATE */
+            .addCategoryBtn {
+                @apply
+                    bg-neutral-800
+                    h-[40px]
+                    w-[135px]
+                    text-neutral-300
+                    text-[12px]
+                    font-bold
+                    rounded-[8px]
+                    flex
+                    justify-center
+                    items-center
+                    gap-2;
+
+                i {
+                    @apply
+                        text-[12px];
+                }
+            }
+        }
+    }   
+
+    /* CATEGORY TABLE WRAPPER */
+    .table-wrapper {
+        @apply
+            bg-neutral-100
+            mx-4
+            px-4
+            py-4
+            border
+            border-neutral-300
+            rounded-md
+            flex
+            flex-col
+            gap-4
+            overflow-auto;
+
+        /* SEARCH & DISPLAY CONTAINER */
+        .search-display-container {
+            @apply
+                flex
+                justify-between;
+
+            /* SEARCH CONTAINER */
+            .search-container {
+                @apply
+                    text-[13px]
+                    text-neutral-700
+                    border
+                    border-neutral-300
+                    rounded
+                    overflow-hidden
+                    flex
+                    items-center;
+
+                .searchBtn {
+                    @apply
+                        h-[35px] 
+                        w-[35px]
+                        text-[13px] 
+                        text-neutral-400
+                        flex 
+                        justify-center 
+                        items-center;
+                }
+            }
+
+            /* ROLE STATUS CONTAINER */
+            .status-container {
+                @apply
+                    text-[14px]
+                    flex
+                    gap-2;
+
+                /* ROLE & STATUS DROPDOWN */
+                .relative {
+                    
+                    /* STATUS DROPDOWN BUTTON */
+                    .status-dropdown-btn {
+                        @apply
+                            h-[35px]
+                            px-[15px]
+                            text-[14px]
+                            text-neutral-700
+                            border
+                            border-neutral-300
+                            rounded-sm
+                            flex
+                            justify-center
+                            items-center
+                            gap-2;
+
+                        i {
+                            @apply
+                                text-[12px];
+                        }
+                    }
+
+                    /* STATUS DROPDOWN CONTAINER */
+                    .status-dropdown-menu {
+                        @apply
+                            absolute 
+                            z-10 
+                            bg-neutral-100 
+                            w-full 
+                            text-[12px] 
+                            text-neutral-700 
+                            rounded 
+                            overflow-hidden;
+
+                        button {
+                            @apply
+                                w-full 
+                                py-1 
+                                border 
+                                border-neutral-400;
+                        }
+                    }
+                }
+            }
+        }
+
+        /* CATEGORY TABLE */
+        .category-table {
+            @apply
+                w-full 
+                text-[14px] 
+                text-center 
+                text-neutral-700;
+
+            /* CATEGORY TABLE HEAD */
+            thead {
+                @apply
+                    bg-neutral-200 
+                    text-neutral-600 
+                    uppercase 
+                    text-xs;
+
+                tr {
+                    th {
+                        @apply
+                            px-4 
+                            py-3;
+                    }
+                }
+            }
+
+            /* CATEGORY TABLE BODY */
+            tbody {
+                @apply
+                    divide-y 
+                    divide-neutral-100;
+
+                tr {
+                    @apply
+                        hover:bg-neutral-50;
+
+                    td {
+                        @apply
+                            px-4 
+                            py-3;
+
+                        .button-action-container {
+                            @apply
+                                flex 
+                                justify-center 
+                                items-center 
+                                gap-1;
+
+                            /* EDIT */
+                            .edit-btn {
+                                @apply
+                                    h-[30px]
+                                    w-[30px]
+                                    rounded
+                                    cursor-pointer
+                                    flex
+                                    justify-center
+                                    items-center;
+                            }
+
+                            /* STATUS TOGGLE */
+                            .status-btn {
+                                @apply
+                                    h-[30px]
+                                    w-[110px]
+                                    border
+                                    border-neutral-500
+                                    rounded
+                                    flex
+                                    justify-center
+                                    items-center;
+                            }
+
+                            /* DELETE */
+                            .delete-btn {
+                                @apply
+                                    h-[30px]
+                                    w-[30px]
+                                    text-red-950
+                                    rounded
+                                    cursor-pointer
+                                    flex
+                                    justify-center
+                                    items-center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* OVERLAY | CATEGORY FORM */
+    .overlay {
+        @apply
+            bg-black/30 
+            absolute 
+            top-0 
+            left-0 
+            bottom-0 
+            right-0 
+            z-50
+            justify-center
+            items-center;
+
+        /* CATEGORY FORM */
+        form {
+            @apply
+                bg-white 
+                p-5
+                text-neutral-800
+                text-[14px]
+                rounded-md
+                flex
+                flex-col
+                gap-5;
+
+            /* TITLE CONTAINER */
+            .title-container {
+                @apply
+                    flex 
+                    justify-between 
+                    items-center;
+
+                h2 {
+                    @apply
+                        text-[17px] 
+                        font-bold;
+                }
+
+                /* REFRESH FORM */
+                .refresh-form-btn {
+                    @apply
+                        h-[30px]
+                        w-[30px]
+                        text-neutral-600
+                        text-[12px]
+                        border
+                        border-neutral-600
+                        rounded
+                        flex
+                        justify-center
+                        items-center;
+                }
+            }
+
+            /* INPUT FIELDS CONTAINER */
+            .input-fields-container {
+                @apply
+                    grid 
+                    grid-cols-1 
+                    gap-1;
+
+                /* NAME & STATUS */
+                .input-container {
+                    @apply
+                        flex 
+                        flex-col 
+                        gap-2;
+
+                    input {
+                        @apply
+                            w-[250px] 
+                            px-3 
+                            py-2 
+                            border 
+                            border-neutral-400 
+                            rounded
+                            focus:outline-none;
+                    }
+
+                    select {
+                        @apply
+                            w-[250px] 
+                            px-3 
+                            py-2 
+                            border 
+                            border-neutral-400 
+                            rounded 
+                            appearance-none
+                            focus:outline-none;
+                    }
+                }
+            }
+
+            /* BUTTON CONTAINER */
+            .button-container {
+                @apply
+                    flex
+                    justify-between;
+
+                /* CANCEL BUTTON */
+                .cancel-btn, .no-btn {
+                    @apply
+                        h-[40px]
+                        px-4
+                        font-normal
+                        border-2
+                        border-neutral-600
+                        text-[13px]
+                        rounded-md
+                        flex
+                        justify-center
+                        items-center
+                        gap-2;
+                }
+
+                /* SAVE CHANGES BUTTON */
+                .save-changes-btn, .yes-btn {
+                    @apply
+                        h-[40px]
+                        px-4
+                        font-normal
+                        bg-neutral-800
+                        text-neutral-200
+                        text-[13px]
+                        rounded-md
+                        flex
+                        justify-center
+                        items-center
+                        gap-2;
+                }
+            }
+        }
+    }
+
+    /* ----------- END CATEGORY MANAGEMENT SECTION ----------- */
+}

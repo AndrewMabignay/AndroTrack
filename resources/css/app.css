@@ -98,3 +98,5 @@ main {
 
 
 @import './user.css';
+
+@import './products/category.css';
